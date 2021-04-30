@@ -1,0 +1,265 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="student_management_system.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://unpkg.com/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <!-- [style] -->
+
+    <style type="text/css">
+		
+			nav{
+			  background: #BD0006;
+			  height: 80px;
+			  width: 100%;
+			  box-shadow: #5050502e 0px 3px 20px 0px;
+			  z-index : 99;
+			  position : fixed;
+			}
+			nav ul{
+			  float: right;
+			  margin-right: 60px;
+			}
+			nav ul li{
+			  display: inline-block;
+			  line-height: 80px;
+			  margin: 0 2px;
+			}
+			 .a{
+			  background-color: transparent;
+			  color: white;
+			  font-weight: 500;
+			  font-size: 20px;
+			  padding: 7px 13px;
+			  border:none;
+			  border-radius: 7px;
+			  font-family: 'Poppins', sans-serif;
+			  
+			}
+			.a.active,.a:hover {
+				background: black;
+				transition: .3s;
+				color: white;
+				text-decoration : none;
+				height:80px;
+			}
+			.checkbtn{
+			  font-size: 30px;
+			  color: white;
+			  float: right;
+			  line-height: 80px;
+			  margin-right: 40px;
+			  
+			  cursor: pointer;
+			  display: none;
+			}
+			.va{
+			  color: black;
+			}
+			.fa-bars{
+			  color: green;
+			}
+			.ig {
+				height: 70px;
+			}
+			.i {
+				height: 65px;
+				margin-top: 2px;
+				
+			}
+			#check{
+			  display: none;
+			}
+			@media (max-width: 1160px){
+			  label.logo{
+				font-size: 27px;
+				padding-left: 25px;
+			  }
+			  .a{
+				font-size: 16px;
+			  }
+			}
+			@media (max-width: 1050px){
+			  .checkbtn{
+				display: block;
+				margin-right: 40px;
+			  }
+			  ul{
+				position: fixed;
+				width: 25%;
+				height: 100vh;
+				background:#ff000060;
+				top: 80px;
+				left: -100%;
+				text-align: center;
+				transition: all .5s;
+			  }
+			  nav ul li{
+				display: block;
+				margin: 50px 0;
+				line-height: 30px;
+			  }
+			 .a{
+				font-size: 20px;
+				color: white;
+			  }
+			  .a:hover, .a.active{
+				background: white;
+				color: black;
+				height:80px;
+				text-decoration : none;
+			  }
+			  #check:checked ~ ul{
+				left: 0;
+			  }
+			}
+			@media(max-width : 473px){
+				.i{
+					height : 39px;
+				}
+				.ig{
+					height : 53px;
+				}
+			}	
+			.footer-main{
+        background-color:#BD0006;
+        margin : 0;
+        padding : 10px;
+		
+
+      }
+      .footer-details{
+        padding : 0 30px 9px 0;
+      }
+      .footer-contact{
+        padding : 0 40px 9px 0;
+      }
+
+      .icons{
+        position : absolute;
+        color : white  ;
+        font-size : 26px;
+      }
+      .footer-details p{
+        margin-left : 40px;
+        font-size : 17px;
+        margin-bottom : 31px;
+        padding : 5px;
+      }
+      .social-icon{
+        display : inline-block;
+        border : 1px solid #53d374;
+        background-color : white;
+        color : white;
+        padding : 8px 13px;
+        font-size : 21px;
+        margin : 0 10px 0 0;
+        border-radius : 50%;
+        transition : 0.3s;
+      }
+	  .input {
+  width: 90%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  resize: vertical;
+}
+
+.label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+.inputsubmit {
+  background-image: linear-gradient(to left bottom, #ee0a14, #ea051d, #e70324, #e2032a, #de042f, #d50038, #cc0040, #c10046, #ad004f, #960054, #7e0057, #640357);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  float: right;
+}
+
+.inputsubmit:hover {
+  background-color: #45a049;
+}
+
+</style>
+    <link href='https://css.gg/menu-left-alt.css' rel='stylesheet'>
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+	
+    <form id="form1" runat="server">
+		
+        <header id="header" >
+			<nav style=" background-image: linear-gradient(to left bottom, #ee0a14, #ea051d, #e70324, #e2032a, #de042f, #d50038, #cc0040, #c10046, #ad004f, #960054, #7e0057, #640357);">
+				<input type="checkbox" id="check"  name="check_box" >
+				<label for="check" class="checkbtn" style="padding:31px">
+					<i class="gg-menu-left-alt"></i>
+				</label>
+				<label class="logo">
+                    <asp:Image ID="Image1" runat="server" ImageUrl="~/image/xyz.png" class="ig"/></label>
+				<ul id="navPanel">
+					<li><asp:Button ID="Button1" Class="a" runat="server" Text="Home" OnClick="Button1_Click" /></li>
+					<li><asp:Button ID="btnlogout" Class="a" runat="server" Text="LogOut" OnClick="btnlogout_Click1" /></li>
+				</ul>
+			</nav>
+		</header>
+
+		<div>
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+		</div>
+
+        <div style="margin-left:auto;margin-right:auto;width:60%;text-align:center;margin-bottom : 205px">
+
+
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+
+
+
+        </div>
+     <footer style="background-image: linear-gradient(to left bottom, #ee0a14, #ea051d, #e70324, #e2032a, #de042f, #d50038, #cc0040, #c10046, #ad004f, #960054, #7e0057, #640357);">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-4 border-bottom my-3 footer-details" style="color:white">
+            <h3 style="color:white">Student Management <br>
+            System</h3>
+            <div class="address">
+              <span class="icons"><i class="fa fa-map-marker"></i></span>
+              <p>Navrachana University, Vadodara Gujarat, 390016</p>
+            </div>
+            <div class="phone-no">
+              <span class="icons"><i class="fa fa-phone"></i></span>
+              <p>Call us: (+91)88668<br>29800</p>
+            </div>
+            <div class="email">
+              <span class="icons"><i class="fa fa-envelope"></i></span>
+              <p>xyz@12345.com</p>
+            </div>
+          </div>
+          <div class="embed-responsive embed-responsive-21by9 col-lg-9 col-md-8 my-3 border-bottom">
+         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.615036792986!2d73.12032771491987!3d22.292567885327607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fc877db07754d%3A0xae632f0b3fbb9f30!2sNavrachana%20University!5e0!3m2!1sen!2sin!4v1618239228636!5m2!1sen!2sin" width="600" height="450" style="border:0;" ></iframe>
+          </div>
+        </div>
+      </div>
+
+    </footer>
+    </form>
+</body>
+</html>
